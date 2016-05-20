@@ -1,0 +1,7 @@
+
+#Prevent acces to directory without index.html
+Options -Indexes
+
+
+
+

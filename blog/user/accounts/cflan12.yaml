@@ -1,0 +1,11 @@
+email: contact@copishboutique.com
+fullname: 'Cory Flanagan'
+title: Admin
+state: enabled
+access:
+  admin:
+    login: true
+    super: true
+  site:
+    login: true
+hashed_password: $2y$10$rUPDVUkNsLeX2AE3e1NeGO86WUfaH8DIOoJxT4eUrqt.ydrBfdEba

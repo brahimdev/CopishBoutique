@@ -1,0 +1,56 @@
+@import 'chartist.scss';
+@import 'shapes.scss';
+@import 'vitality-red';
+@import 'animate';
+@import 'chart';
+
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(http://fonts.googleapis.com/css?family=Cardo:400,400italic,700);
+
+
+.filter {
+	filter: grayscale(1);
+}
+
+.value-col {
+	margin-top:50px;
+	margin-bottom:50px;
+}
+
+.copy-img {
+	border: 2px solid #000000;
+	box-shadow: 5px 5px 5px #000000;
+}
+
+.textshadow {
+	text-shadow: 2px 2px #909090;
+}
+
+.gradient {
+	background: 
+	linear-gradient(
+		to right,
+		#0097A7,
+		#00BCD4);
+}
+
+.stripes {
+	background: repeating-linear-gradient(
+  	45deg,
+  	rgba(3, 169, 244, 0.3),
+  	rgba(3, 169, 244, 0.3) 10px,
+  	rgba(255, 255, 255, 0.3) 10px,
+  	rgba(255, 255, 255, 0.3) 20px
+	);
+}
+
+.client {
+	margin-bottom: 40px;
+}
+
+
+
+
+
+

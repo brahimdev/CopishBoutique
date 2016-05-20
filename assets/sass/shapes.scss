@@ -1,0 +1,160 @@
+
+/*Responsive Razorblade */
+
+/*==========  Variables  ==========*/
+
+$pg-bg:             #dcdcdc;
+$rr-bg:             #232E39;
+$rr-bg-hover:       darken($rr-bg, 10%);
+
+$rr-height:         200px;
+$rr-slant:          100px;
+$rr-gutter:         1%;
+$rr-width:          50%;
+
+
+/*==========  Styles  ==========*/
+// Scaffolding
+body {
+	/*background-color: $pg-bg; */
+	/*color: lighten($rr-bg, 40%); */
+}
+h2 { text-transform: uppercase; }
+.rr > div { text-align: center; }
+
+/* Construct the rectangles */
+.rr {
+	position: relative;
+	height: $rr-height;
+	background: $rr-bg;
+	&.rr-left {
+		/*z-index: 0; */
+		float: left;
+		width: $rr-width + 5%; // + 5% adjustment for slant offset
+		color: #FFFFFF;
+	}
+	&.rr-right {
+		/*z-index: 0; */
+		float: right;
+		width: $rr-width - $rr-gutter - 5%; // - 5% adjustment for slant offset
+		color: #FFFFFF;
+	}
+}
+
+/* Add slanted edges */
+.rr:after,
+.rr:before {
+	content: "";
+	position: absolute;
+	top: 0;
+	width: 0;
+	height: 0;
+}
+.rr-left:after {
+	right: 0;
+	border-left: $rr-slant solid $rr-bg;
+	border-bottom: $rr-height solid $pg-bg;
+}
+.rr-right:before {
+	left: -$rr-slant;
+	border-right: $rr-slant solid $rr-bg;
+	border-top: $rr-height solid rgba(0, 0, 0, 0); // overlaps .rr-left
+}
+
+/* Add padding around inner content */
+.rr-left > div {
+	margin-right: $rr-slant;
+	margin-left: $rr-slant/2;
+}
+.rr-right > div {
+	margin-right: $rr-slant/2;
+	margin-left: $rr-slant/4;
+}
+
+/* Angled Edge */
+// mixin
+@mixin angle($pseudo, $flip: false, $angle: 1.5deg) {
+  // Possible values for $pseudo are: before, after, both
+  @if $pseudo == 'before' or $pseudo == 'after' or $pseudo == 'both' {
+    position: relative;
+    z-index: 1;
+    $selector: if($pseudo == 'both', '&:before,&:after', '&:#{$pseudo}');
+
+    #{$selector} {
+      background: inherit;
+      content: '';
+      display: block;
+      height: 50%;
+      left: 0;
+      position: absolute;
+      right: 0;
+      z-index: -1;
+    }
+
+    @if $pseudo == 'before' {
+      #{$selector} {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+    }
+
+    @if $pseudo == 'after' {
+      #{$selector} {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 100%;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+
+    @if $pseudo == 'both' {
+      &:before {
+        top: 0;
+
+        @if $flip {
+          transform: skewY($angle * -1);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle);
+          transform-origin: 100% 0;
+        }
+      }
+
+      &:after {
+        bottom: 0;
+
+        @if $flip {
+          transform: skewY($angle);
+          transform-origin: 0 0;
+        } @else {
+          transform: skewY($angle * -1);
+          transform-origin: 100%;
+        }
+      }
+    }
+  }
+}
+
+.edge--bottom--reverse {
+  @include angle(after, true);
+}
+
+.edge--top--reverse {
+  @include angle(before, true);
+}
+
+.edge--both--reverse {
+  @include angle(both, true);
+}

@@ -1,0 +1,49 @@
+
+.ct-chart {
+  box-shadow: (10px 10px shade(#67686E, 10%));
+  background-color: shade(#67686E, 5%);
+}
+
+.ct-series {
+      &.ct-series-a {
+        .ct-line {
+          stroke-dasharray: 5px;
+          
+        box-shadow: (10px 10px shade(#67686E, 10%));
+        background-color: shade(#67686E, 5%);
+        animation: (teeter, 10s linear infinite);
+
+        animation: (dashoffset, 1s linear infinite);
+        }
+        
+        .ct-point {
+           animation: (bouncing-stroke, 0.6s linear infinite);
+        }
+      }
+      
+      &.ct-series-b {
+        .ct-line {
+          stroke-width: 10px;
+          stroke-dasharray: 15px 5px;
+          
+           animation:(dashoffset, 2s linear infinite);
+        }
+        
+        .ct-point {
+           animation:(exploding-stroke, 1.8s linear infinite);
+        }
+      }
+      
+      &.ct-series-c {
+        .ct-line {
+          stroke-width: 2px;
+          stroke-dasharray: 20px 180px;
+          
+         animation: (pulse, 2s linear infinite);
+        }
+      }
+    }
+    
+    .ct-grid {
+      stroke: rgba(0,0,0,.1);
+    }
