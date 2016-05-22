@@ -1,73 +1,81 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1463777860,
-    'checksum' => '6f34462b1d9e09167e74bcadd2015e91',
+    'timestamp' => 1463783127,
+    'checksum' => 'd56a337479e00303c35b2673bcf07c40',
     'files' => [
         'user/config' => [
             'media' => [
                 'file' => 'user/config/media.yaml',
-                'modified' => 1463776783
+                'modified' => 1463781058
             ],
             'security' => [
                 'file' => 'user/config/security.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781058
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'streams' => [
                 'file' => 'user/config/streams.yaml',
-                'modified' => 1463776783
+                'modified' => 1463781058
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1463777860
+                'modified' => 1463782401
             ]
         ],
         'system/config' => [
             'media' => [
                 'file' => 'system/config/media.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'site' => [
                 'file' => 'system/config/site.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'streams' => [
                 'file' => 'system/config/streams.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'system' => [
                 'file' => 'system/config/system.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ]
         ],
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/admin.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781058
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/email.yaml',
-                'modified' => 1463777792
+                'modified' => 1463781059
             ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/error.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
+            ],
+            'plugins/feed' => [
+                'file' => 'user/plugins/feed/feed.yaml',
+                'modified' => 1463782401
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/form.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781059
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/login.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781059
+            ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/pagination.yaml',
+                'modified' => 1463782401
             ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/problems.yaml',
-                'modified' => 1463777794
+                'modified' => 1463782401
             ]
         ]
     ],
@@ -130,6 +138,13 @@ return [
                 'routes' => [
                     404 => '/error'
                 ]
+            ],
+            'feed' => [
+                'enabled' => true,
+                'limit' => 10,
+                'description' => 'My Feed Description',
+                'lang' => 'en-us',
+                'length' => 500
             ],
             'form' => [
                 'enabled' => true,
@@ -220,6 +235,11 @@ return [
                         ]
                     ]
                 ]
+            ],
+            'pagination' => [
+                'enabled' => true,
+                'built_in_css' => true,
+                'delta' => 0
             ],
             'problems' => [
                 'enabled' => true,
@@ -469,14 +489,16 @@ return [
             ]
         ],
         'site' => [
-            'title' => 'Grav',
+            'title' => 'Mediator',
             'author' => [
-                'name' => 'Joe Bloggs',
-                'email' => 'joe@test.com'
+                'name' => 'Bill Bloggs',
+                'email' => 'a-mail@mail.mail',
+                'image' => '/user/images/avatar.jpg',
+                'bio' => 'I\'m a blogger and a Grav-lover'
             ],
             'taxonomies' => [
-                0 => 'category',
-                1 => 'tag'
+                0 => 'tag',
+                1 => 'featured'
             ],
             'metadata' => [
                 'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
@@ -491,6 +513,44 @@ return [
             'routes' => NULL,
             'blog' => [
                 'route' => '/blog'
+            ],
+            'description' => 'A Grav theme - Medium inspired',
+            'logo' => '/user/images/logo.jpg',
+            'date_long' => 'd F Y',
+            'date_short' => 'd M Y',
+            'social' => [
+                0 => [
+                    'icon' => 'twitter',
+                    'url' => 'https://twitter.com/getgrav',
+                    'desc' => 'Follow me on twitter',
+                    'share_url' => 'http://twitter.com/share',
+                    'share_title' => '?text=',
+                    'share_link' => '&amp;url='
+                ],
+                1 => [
+                    'icon' => 'facebook',
+                    'url' => 'https://facebook.com/???',
+                    'desc' => 'Connect with me facebook',
+                    'share_url' => '//www.facebook.com/sharer.php',
+                    'share_title' => '?t=',
+                    'share_link' => '&amp;u='
+                ],
+                2 => [
+                    'icon' => 'github',
+                    'url' => 'https://github.com/getgrav',
+                    'desc' => 'Fork me on github',
+                    'share_url' => NULL,
+                    'share_title' => NULL,
+                    'share_link' => NULL
+                ],
+                3 => [
+                    'icon' => 'google-plus',
+                    'url' => 'https://google.com/???',
+                    'desc' => 'Add me on google+',
+                    'share_url' => NULL,
+                    'share_title' => NULL,
+                    'share_link' => NULL
+                ]
             ]
         ],
         'streams' => [
@@ -518,7 +578,7 @@ return [
         ],
         'system' => [
             'absolute_urls' => false,
-            'timezone' => 'America/Tijuana',
+            'timezone' => '',
             'default_locale' => NULL,
             'param_sep' => ':',
             'wrapped_site' => false,
@@ -536,11 +596,11 @@ return [
                 'override_locale' => false
             ],
             'home' => [
-                'alias' => '/home',
+                'alias' => '/blog',
                 'hide_in_urls' => false
             ],
             'pages' => [
-                'theme' => 'antimatter',
+                'theme' => 'mediator',
                 'order' => [
                     'by' => 'default',
                     'dir' => 'asc'
@@ -588,7 +648,7 @@ return [
                 'etag' => false,
                 'vary_accept_encoding' => false,
                 'redirect_default_route' => false,
-                'redirect_default_code' => '301',
+                'redirect_default_code' => 301,
                 'redirect_trailing_slash' => true,
                 'ignore_files' => [
                     0 => '.DS_Store'
@@ -599,7 +659,7 @@ return [
                 ],
                 'ignore_hidden' => true,
                 'url_taxonomy_filters' => true,
-                'markdown_extra' => false
+                'markdown_extra' => true
             ],
             'cache' => [
                 'enabled' => true,

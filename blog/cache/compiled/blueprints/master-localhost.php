@@ -1,51 +1,59 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledBlueprints',
-    'timestamp' => 1463777794,
-    'checksum' => 'fdea26a4d0fa7d561c9cd0674d89d337',
+    'timestamp' => 1463783127,
+    'checksum' => '602eacb519daeb3b306fe31a1f190a12',
     'files' => [
         'system/blueprints/config' => [
             'media' => [
                 'file' => 'system/blueprints/config/media.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'site' => [
                 'file' => 'system/blueprints/config/site.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'streams' => [
                 'file' => 'system/blueprints/config/streams.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ],
             'system' => [
                 'file' => 'system/blueprints/config/system.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
             ]
         ],
         'user/plugins' => [
             'plugins/admin' => [
                 'file' => 'user/plugins/admin/blueprints.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781058
             ],
             'plugins/email' => [
                 'file' => 'user/plugins/email/blueprints.yaml',
-                'modified' => 1463777792
+                'modified' => 1463781059
             ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/blueprints.yaml',
-                'modified' => 1463775708
+                'modified' => 1463782401
+            ],
+            'plugins/feed' => [
+                'file' => 'user/plugins/feed/blueprints.yaml',
+                'modified' => 1463782401
             ],
             'plugins/form' => [
                 'file' => 'user/plugins/form/blueprints.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781059
             ],
             'plugins/login' => [
                 'file' => 'user/plugins/login/blueprints.yaml',
-                'modified' => 1463775708
+                'modified' => 1463781059
+            ],
+            'plugins/pagination' => [
+                'file' => 'user/plugins/pagination/blueprints.yaml',
+                'modified' => 1463782401
             ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/blueprints.yaml',
-                'modified' => 1463777794
+                'modified' => 1463782401
             ]
         ]
     ],
@@ -421,12 +429,12 @@ return [
             ],
             'plugins.error.enabled' => [
                 'type' => 'toggle',
-                'label' => 'Plugin status',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
                 'highlight' => 1,
                 'default' => 0,
                 'options' => [
-                    1 => 'Enabled',
-                    0 => 'Disabled'
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
                 ],
                 'validate' => [
                     'type' => 'bool'
@@ -443,6 +451,59 @@ return [
                 'label' => '404 Route',
                 'default' => '/error',
                 'name' => 'plugins.error.routes.404'
+            ],
+            'plugins.feed' => [
+                'type' => '_parent',
+                'name' => 'plugins.feed'
+            ],
+            'plugins.feed.enabled' => [
+                'type' => 'toggle',
+                'label' => 'Plugin status',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'Enabled',
+                    0 => 'Disabled'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.feed.enabled'
+            ],
+            'plugins.feed.limit' => [
+                'type' => 'text',
+                'label' => 'Feed count',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 10,
+                    'max' => 1000
+                ],
+                'name' => 'plugins.feed.limit'
+            ],
+            'plugins.feed.description' => [
+                'type' => 'textarea',
+                'label' => 'Description',
+                'name' => 'plugins.feed.description'
+            ],
+            'plugins.feed.lang' => [
+                'type' => 'text',
+                'label' => 'Feed language code',
+                'default' => 'en',
+                'placeholder' => 'en',
+                'validate' => [
+                    'pattern' => '[a-zA-Z]{2,3}(-[a-zA-Z]{2,3})?'
+                ],
+                'name' => 'plugins.feed.lang'
+            ],
+            'plugins.feed.length' => [
+                'type' => 'text',
+                'label' => 'Feed Length',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 10,
+                    'max' => 10000
+                ],
+                'name' => 'plugins.feed.length'
             ],
             'plugins.form' => [
                 'type' => '_parent',
@@ -937,6 +998,50 @@ return [
                     'type' => 'string'
                 ],
                 'name' => 'plugins.login.oauth.providers.Twitter.credentials.secret'
+            ],
+            'plugins.pagination' => [
+                'type' => '_parent',
+                'name' => 'plugins.pagination'
+            ],
+            'plugins.pagination.enabled' => [
+                'type' => 'toggle',
+                'label' => 'PLUGIN_ADMIN.PLUGIN_STATUS',
+                'highlight' => 1,
+                'default' => 0,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.pagination.enabled'
+            ],
+            'plugins.pagination.delta' => [
+                'type' => 'text',
+                'size' => 'x-small',
+                'label' => 'Delta',
+                'default' => 0,
+                'help' => 'How many pages to show left and right of the current page',
+                'validate' => [
+                    'type' => 'number',
+                    'min' => 0
+                ],
+                'name' => 'plugins.pagination.delta'
+            ],
+            'plugins.pagination.built_in_css' => [
+                'type' => 'toggle',
+                'label' => 'Use built in CSS',
+                'highlight' => 1,
+                'default' => 1,
+                'options' => [
+                    1 => 'PLUGIN_ADMIN.ENABLED',
+                    0 => 'PLUGIN_ADMIN.DISABLED'
+                ],
+                'validate' => [
+                    'type' => 'bool'
+                ],
+                'name' => 'plugins.pagination.built_in_css'
             ],
             'plugins.problems' => [
                 'type' => '_parent',
@@ -2268,6 +2373,13 @@ return [
                         404 => 'plugins.error.routes.404'
                     ]
                 ],
+                'feed' => [
+                    'enabled' => 'plugins.feed.enabled',
+                    'limit' => 'plugins.feed.limit',
+                    'description' => 'plugins.feed.description',
+                    'lang' => 'plugins.feed.lang',
+                    'length' => 'plugins.feed.length'
+                ],
                 'form' => [
                     'enabled' => 'plugins.form.enabled',
                     'files' => [
@@ -2339,6 +2451,11 @@ return [
                             ]
                         ]
                     ]
+                ],
+                'pagination' => [
+                    'enabled' => 'plugins.pagination.enabled',
+                    'delta' => 'plugins.pagination.delta',
+                    'built_in_css' => 'plugins.pagination.built_in_css'
                 ],
                 'problems' => [
                     'enabled' => 'plugins.problems.enabled',
