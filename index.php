@@ -54,6 +54,19 @@
 
     <?php include 'include/navbar.php'; ?>
 
+    <header style="background-color:#607D8B">
+        <div class="intro-content">
+            <img src="assets/img/copishBoutiqueLogo.png" /><div class="brand-name textshadow">Ready to Start Our Project Together?</div>
+            <hr class="colored">
+            <div class="brand-name-subtext">Contact Form</div>
+        </div>
+        <div class="scroll-down">
+            <a class="btn page-scroll" href="#">
+                <i class="fa fa-angle-down fa-fw"></i>
+            </a>
+        </div>
+    </header>
+
 
     <header style="background-color:#607D8B">
         <div class="intro-content">
